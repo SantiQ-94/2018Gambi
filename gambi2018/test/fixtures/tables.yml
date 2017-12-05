@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  group_name: MyString
+  owner: 
+  max_people: 1
+
+two:
+  status: MyString
+  group_name: MyString
+  owner: 
+  max_people: 1
