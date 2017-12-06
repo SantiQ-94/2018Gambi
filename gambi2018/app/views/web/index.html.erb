@@ -1,1 +1,3 @@
 <%= render "login" if @current_user.nil? %>
+<%= render "dashboard" if @current_user and @current_user.admin? %>
+<%= render "tables" if @current_user and not @current_user.admin? %>

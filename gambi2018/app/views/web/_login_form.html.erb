@@ -1,0 +1,36 @@
+
+<div class="page-header">
+	<center>
+		<h2>2018 with Dyland</h2>
+	</center>
+</div>
+<div class="row">
+	<div class="col-md-4 col-sm-2 col-xs-1"></div>
+	<div class="col-md-4 col-sm-8 col-xs-10">
+		<center>
+			<p>
+				Inicia sesión con los datos de tu factura y <br><b>reserva tu mesa</b>
+			</p>
+		</center>
+		<div class="panel panel-default panel-vertical">
+			<div class="panel-body">
+				<%= form_tag "/login", method: "post" do %>
+
+					<label for="username">Número de talón: </label>
+					<input type="text" name="username" class="form-control" id="username">
+					<label for="password">Número de factura:</label>
+					<input type="text" name="password" id="password" class="form-control"> <br>
+
+					<% if @authentication_error %>
+						<p class="text-danger">Datos invalidos. Por favor verifica los datos de tu entrada e intenta de nuevo.</p>
+					<% end %>
+
+					<center>
+						<button type="submit" class="btn btn-primary">Iniciar sesión</button>
+					</center>
+				<% end %>				
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-2 col-xs-1"></div>
+</div>
