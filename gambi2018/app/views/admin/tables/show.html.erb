@@ -1,0 +1,60 @@
+<%= render "layouts/shared/navbar" %>
+<%= render "reserve_modal" %>
+<%= render "add_member_modal" %>
+
+<div class="container">
+	<div class="page-header">
+		<h1>Mesa #<%= @table.id %></h1>
+		<%= render @table.status.downcase %>
+	</div>
+	<div class="row">
+		<% if @error_message %>
+			<div class="alert alert-danger" role="alert"><%= @error_message %></div>
+		<% end %>
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Detalles de la mesa</h3>
+				</div>
+				<div class="panel panel-body">
+					<b>Nombre del grupo:</b> <%= @table.group_name or "-- mesa sin reserva --" %> <br>
+					<b>Propietario:</b> <%= @table.owner ? @table.owner.name : "-- mesa sin reserva --" %> <br>
+					<b>Cant. max. de miembros:</b> <%= @table.max_people or "-- mesa sin reserva --" %> <br>
+					<b>Miembros registrados:</b> <%= @table.users.count %> <br><br>
+
+					<% if @table.max_people and @table.users.count < @table.max_people %>
+						<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#add_member_modal"><i class="fa fa-user-plus"></i> Añadir miembro</button>
+					<% end %>
+
+					<% if @table.free? %>
+						<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#reserve_modal">Reservar</button>
+					<% end %>
+
+				</div>
+				<% if @table.users.count > 0 %>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Teléfono</th>
+								<th>Nº Lote</th>
+								<th>Nº Factura</th>
+							</tr>	
+						</thead>
+						<tbody>
+							<% @table.users.each do |user| %>
+								<tr>
+									<td><%= user.name %></td>
+									<td><%= user.phone %></td>
+									<td><%= user.username %></td>
+									<td><%= user.password %></td>
+								</tr>
+							<% end %>
+						</tbody>
+						
+					</table>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

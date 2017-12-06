@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20171205140014) do
   create_table "tables", force: :cascade do |t|
     t.string "status"
     t.string "group_name"
-    t.bigint "owner"
+    t.bigint "owner_id"
     t.integer "max_people"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

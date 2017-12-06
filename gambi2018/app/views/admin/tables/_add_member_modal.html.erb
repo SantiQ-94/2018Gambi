@@ -1,0 +1,28 @@
+<div class="modal fade" id="add_member_modal" tab_index="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<%= form_tag admin_table_add_member_path(@table), method: "post" do %>
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" daria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4>Añadir miembro</h4>
+				</div>
+				<div class="modal-body">
+					<label for="lote">Nº de lote:</label>
+					<input required type="text" name="lote" id="lote" class="form-control">
+					<label for="factura">Nº de factura:</label>
+					<input required type="text" name="factura" id="factura" class="form-control">
+					<label for="name">Nombre del miembro:</label>
+					<input required type="text" name="name" id="name" class="form-control">
+					<label for="phone">Teléfono:</label>
+					<input required type="text" name="phone" id="phone" class="form-control">
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="submit" class="btn btn-primary"><i class="fa fa-user-plus"></i> Añadir miembro</button>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,36 @@
+<div class="modal fade" id="reserve_modal" tab_index="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<%= form_tag admin_table_reserve_path(@table), method: "post" do %>
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" daria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4>Resevar mesa</h4>
+				</div>
+				<div class="modal-body">
+					<label for="lote">Nº de lote:</label>
+					<input required type="text" name="lote" id="lote" class="form-control">
+					<label for="factura">Nº de factura:</label>
+					<input required type="text" name="factura" id="factura" class="form-control">
+					<label for="group_name">Nombre del grupo:</label>
+					<input required type="text" name="group_name" id="group_name" class="form-control">
+					<label for="owner_name">Nombre del propietario:</label>
+					<input required type="text" name="owner_name" id="owner_name" class="form-control">
+					<label for="owner_phone">Teléfono:</label>
+					<input required type="text" name="owner_phone" id="owner_phone" class="form-control">
+					<label for="max_people">Cantidad máxima de miembros:</label>
+					<select class="form-control" name="max_people" id="max_people">
+						<% (6..12).to_a.each do |i| %>
+							<option value="<%=i%>"><%=i%></option>
+						<% end %>
+					</select>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="submit" class="btn btn-primary">Reservar</button>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

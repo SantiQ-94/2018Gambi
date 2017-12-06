@@ -4,4 +4,12 @@ Rails.application.routes.draw do
   root to: 'web#index'
   post "/login", to: 'web#login'
   get "/logout", to: 'web#logout'
+
+  namespace :admin do
+  	resources :tables do 
+  		post "reserve"
+  		post "add_member"
+  	end
+  end
+
 end
