@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  belongs_to :table
+  belongs_to :table, optional: true
 end
