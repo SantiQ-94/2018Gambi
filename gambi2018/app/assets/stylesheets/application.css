@@ -16,3 +16,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+html, body{
+	height: 100%;
+	width: 100%;
+}
+
+.panel-vertical{
+	padding: 20px 0;
+}
