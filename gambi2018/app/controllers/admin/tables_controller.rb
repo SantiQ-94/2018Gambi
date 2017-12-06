@@ -4,7 +4,27 @@ class Admin::TablesController < ApplicationController
 	before_action :validate_table_and_user, only: [:reserve, :add_member]
 
 	def index
-		
+	end
+
+	def confirm
+		table = Table.find params[:table_id]
+		table.update status: Table::CONFIRMED
+		redirect_to admin_table_path(table)
+	end
+
+	def unconfirm
+		table = Table.find params[:table_id]
+		table.update status: Table::RESERVED
+		redirect_to admin_table_path(table)
+	end
+
+	def cancel
+		table = Table.find params[:table_id]
+		table.update status: Table::FREE, group_name: nil, max_people: nil, owner_id: nil
+		table.users.each do |user|
+			user.update name: nil, phone: nil, table: nil
+		end
+		redirect_to admin_table_path(table)
 	end
 
 	def show
@@ -13,14 +33,10 @@ class Admin::TablesController < ApplicationController
 
 	def add_member
 
-		puts "lala"
-
 		if @table.free? or @table.full? or @user.table
 			abort_mission
 			return
 		end
-
-		puts "lero lero"
 
 		Table.transaction do
 			@user.table = @table
@@ -44,7 +60,7 @@ class Admin::TablesController < ApplicationController
 			@user.phone = params[:owner_phone]
 			@user.table = @table
 			@user.save!
-			@table.owner_id = user.id
+			@table.owner_id = @user.id
 			@table.group_name = params[:group_name]
 			@table.max_people = params[:max_people]
 			@table.status = Table::RESERVED
@@ -55,10 +71,6 @@ class Admin::TablesController < ApplicationController
 	end
 
 	private
-
-	def verify_admin
-		redirect_to "/" and return if @current_user.nil? or not @current_user.admin?
-	end
 
 	def validate_table_and_user
 

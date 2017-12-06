@@ -1,0 +1,24 @@
+<div class="modal fade" id="user_add_modal" tab_index="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<%= form_tag "", method: "post" do %>
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" daria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4>Unirse a la mesa #<span id="table-number"></span></h4>
+				</div>
+				<div class="modal-body">
+					<label for="name">Nombre:</label>
+					<input required type="text" name="name" id="name" class="form-control">
+					<label for="phone">Teléfono:</label>
+					<input required type="text" name="phone" id="phone" class="form-control">
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="submit" class="btn btn-primary"><i class="fa fa-user-plus"></i> Unirse</button>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

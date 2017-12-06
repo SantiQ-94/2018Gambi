@@ -1,0 +1,21 @@
+<div class="modal fade" id="confirm_modal" tab_index="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<%= form_tag admin_table_confirm_path(@table), method: "put" do %>
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" daria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4>Confirmar reserva de mesa</h4>
+				</div>
+				<div class="modal-body">
+					<p> Esta seguro que quiere confirmar la reserva de la mesa #<%= @table.id %> perteneciente a "<%= @table.owner.name %>"?</p>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Confirmar</button>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

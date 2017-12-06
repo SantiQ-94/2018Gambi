@@ -29,3 +29,17 @@ html, body{
 	border-radius: 15px;
 }
 
+.table-disponible{
+	background-color: green;
+}
+.table-reservada{
+	background-color: orange;
+}
+.table-confirmada{
+	background-color: gray;
+}
+
+.table-disponible:hover, .table-appendable:hover{
+	background-color: #ddd;
+	cursor: pointer;
+}

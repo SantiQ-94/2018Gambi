@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   	@current_user = User.find_by id: session[:user_id]
   end
 
+  def verify_admin
+    redirect_to "/" and return if @current_user.nil? or not @current_user.admin?
+  end
+
 end

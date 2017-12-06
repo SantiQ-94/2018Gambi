@@ -1,0 +1,51 @@
+<%= render "layouts/shared/navbar_mini" %>
+
+<div class="container">
+	<div class="page-header">
+		<% if @table.owner_id == @current_user.id %>
+			<h1><small>Has reservado la </small>Mesa #<%= @table.id %></h1>
+		<% else %>
+			<h1><small>Te has unido a la </small>Mesa #<%= @table.id %></h1>
+		<% end %>
+		<%= render "/admin/tables/#{@table.status.downcase}" %>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Detalles de la mesa</h3>
+				</div>
+				<div class="panel panel-body">
+					<b>Nombre del grupo:</b> <%= @table.group_name or "-- mesa sin reserva --" %> <br>
+					<b>Propietario:</b> <%= @table.owner ? @table.owner.name : "-- mesa sin reserva --" %> <br>
+					<b>Contacto:</b> <%= @table.owner ? @table.owner.phone : "-- mesa sin reserva --" %> <br>
+					<b>Cant. max. de miembros:</b> <%= @table.max_people or "-- mesa sin reserva --" %> <br>
+					<b>Miembros registrados:</b> <%= @table.users.count %> <br><br>
+					
+				</div>
+				<% if @table.users.count > 0 %>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Teléfono</th>
+								<th>Nº Lote</th>
+								<th>Nº Factura</th>
+							</tr>	
+						</thead>
+						<tbody>
+							<% @table.users.each do |user| %>
+								<tr>
+									<td><%= user.name %> <%= render "me_label" if user.id == @current_user.id %></td>
+									<td><%= user.phone %></td>
+									<td><%= user.username %></td>
+									<td><%= user.password %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

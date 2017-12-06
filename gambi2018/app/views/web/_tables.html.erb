@@ -1,6 +1,6 @@
-<div class="navbar_tables">
-	<a href="/logout">Cerrar sesión</a>
-</div>
+<%= render "layouts/shared/navbar_mini" %>
+<%= render "reservar_table" %>
+<%= render "user_add_modal" %>
 <main class="container-fluid" role="main">
 	<center>
 		<h2> Te damos la bienvenida a la reserva de mesas</h2>
@@ -13,7 +13,9 @@
 				<% (0..8).to_a.each do |i|%>
 					<tr>
 						<%(1..10).to_a.each do |j|%>
-							<td  class="class-entry" id="t<%= j + 10*i%>"> <%= image_tag("table.png", size: "25x25")%> <%= j + 10*i%> </td>
+
+							<% table = Table.find(j + 10*i) %>
+							<td  class="<%= "table-appendable" if table.has_room? %> table-entry table-<%= table.status.downcase %>" id="<%= j + 10*i%>"> <%= image_tag("table.png", size: "25x25")%> <%= j + 10*i%> </td>
 						<%end%>
 					</tr>
 				<%end%>
@@ -26,7 +28,8 @@
 				<% (0..8).to_a.each do |i|%>
 					<tr>
 						<%(1..10).to_a.each do |j|%>
-							<td class="class-entry" id="t<%= 90 + j + 10*i%>"> <%= image_tag("table.png", size: "25x25")%> <%=90 + j + 10*i%> </td>
+							<% table = Table.find(90 + j + 10*i) %>
+							<td class="<%= "table-appendable" if table.has_room? %> table-entry table-<%= table.status.downcase %>" id="<%= 90 + j + 10*i%>"> <%= image_tag("table.png", size: "25x25")%> <%=90 + j + 10*i%> </td>
 						<%end%>
 					</tr>
 				<%end%>
@@ -42,7 +45,10 @@
 				<% (0..9).to_a.each do |i|%>
 					<tr>
 						<%(1..12).to_a.each do |j|%>
-							<td class="class-entry" id="t<%= 180 + j + 12*i%>"> <%= image_tag("table.png", size: "25x25")%> <%=180 + j + 12*i%> </td>
+							<% table = Table.find(180 + j + 12*i) %>
+							<td class="<%= "table-appendable" if table.has_room? %> table-entry table-<%= table.status.downcase %>" id="<%= 180 + j + 12*i%>"> 
+								<%= image_tag("table.png", size: "25x25")%> <%=180 + j + 12*i%> 
+							</td>
 						<%end%>
 					</tr>
 				<%end%>
@@ -52,10 +58,17 @@
 
 </main>
 <script type="text/javascript">
-	$(".table-entry").click(function(){
+	$(".table-disponible").click(function(){
 		//<!-- esta funcion recupera el id de la mesa en la que se hizo click y genera el modal para la reserva de mesas-->
-		var id = $(this).attr("id")
-		console.log(id)
+		var id = $(this).attr("id");
+		$("#user_reserve_modal").find("form").attr("action", "/reserve/"+id);
+		$("#user_reserve_modal").modal("show");
+	});
 
+	$(".table-appendable").click(function(){
+		var id = $(this).attr("id");
+		$("#user_add_modal").find("form").attr("action", "/join/"+id);
+		$("#table-number").text(id);
+		$("#user_add_modal").modal("show");
 	});
 </script>
