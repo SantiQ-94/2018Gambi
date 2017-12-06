@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: 'web#index'
   post "/login", to: 'web#login'
   get "/logout", to: 'web#logout'
+
 end
