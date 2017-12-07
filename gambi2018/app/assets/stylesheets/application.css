@@ -43,3 +43,7 @@ html, body{
 	background-color: #ddd;
 	cursor: pointer;
 }
+
+.help-img{
+	width: 100%;
+}

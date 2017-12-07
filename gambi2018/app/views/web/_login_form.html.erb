@@ -15,7 +15,7 @@
 		</center>
 		<div class="panel panel-default panel-vertical">
 			<div class="panel-body">
-				<div class="login-help" id="myBtn"> 
+				<div class="login-help" id="help-trigger"> 
 					¿Necesitas ayuda?
 				</div>
 				<%= form_tag "/login", method: "post" do %>
@@ -39,40 +39,29 @@
 	<div class="col-md-4 col-sm-2 col-xs-1"></div>
 </div>
 
-<!--Modal para mostrar la imagen de la entrada-->
-<div id="myModal" class="modal-login">
+<div class="modal fade" id="help_login_modal" tab_index="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
 
-  <!-- Modal content -->
-  <div class="modal-login-content">
-    <span class="close">&times;</span>
-    <img src="<%= asset_path 'entrada_ejemplo.png'%>">
-  </div>
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" daria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4>¿Necesitas ayuda?</h4>
+			</div>
+			<div class="modal-body">
+				<center>
+					<%= image_tag "imagen_modelo.png", class: "help-img" %>
+				</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+			</div>
+		</div>
+	</div>
 </div>
 
+
 <script type="text/javascript">
-	// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-} 
+$("#help-trigger").click(function() {
+	$("#help_login_modal").modal("show");
+});
 </script>

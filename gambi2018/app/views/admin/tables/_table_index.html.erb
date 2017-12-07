@@ -1,6 +1,6 @@
 <%= render "layouts/shared/navbar" %>
 <div class="container">
-	<% Table.all.each do |table| %>
-		<%= link_to table.id, admin_table_path(table) %>
+	<% (1..300).to_a.each do |id| %>
+		<a href="<%="/admin/tables/#{id}"%>"><%= id %></a>
 	<% end %>
 </div>
