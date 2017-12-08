@@ -1,16 +1,33 @@
 #background_login {
 	background-image: url("<%= asset_path 'background.png'%>");
-	height: 100%;	
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center top;
+	background-size: auto 100%;
+	height: 100%
 }
 
 .login_text{
-	color: #b4b4b4;
+	color: white;
 }
 
 .table_sector{
 	border-color: #212529;
 	border-style: solid;
 	border-width: 2px;
+	border-radius: 5px;
+	padding: 5px;
+	width: 87%;
+}
+
+.sector-separator{
+	width: 6%;
+	display: inline-block;
+}
+
+.table_sector_half{
+	width: 40%;
+	display: inline-block;
 }
 
 .navbar_tables{

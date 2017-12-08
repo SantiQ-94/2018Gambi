@@ -2,6 +2,15 @@ class Admin::MembersController < ApplicationController
 
 	before_action :verify_admin
 
+	def index
+		
+	end
+
+	def toggle
+		user = User.find params[:member_id]
+		user.update notify: (not user.notify)
+	end
+
 	def update
 		user = User.find params[:id]
 		user.update(name: params[:name], phone: params[:phone])

@@ -1,67 +1,77 @@
 <%= render "layouts/shared/navbar_mini" %>
 <%= render "reservar_table" %>
 <%= render "user_add_modal" %>
-<main class="container-fluid" role="main">
-	<center>
-		<h2> Te damos la bienvenida a la reserva de mesas</h2>
-	</center>
-	<div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-4 table_sector"> 
-			<center>
-				Seccion uno
-			</center>
-			<table id="sector_1">
-				<% (0..8).to_a.each do |i|%>
-					<tr>
-						<%(1..10).to_a.each do |j|%>
 
-							<% table = Table.find(j + 10*i) %>
-							<td  class="<%= "table-appendable" if table.has_room? %> table-entry table-<%= table.status.downcase %>" id="<%= j + 10*i%>"> <%= image_tag("table.png", size: "25x25")%> <%= j + 10*i%> </td>
-						<%end%>
-					</tr>
-				<%end%>
-			</table>
+<main class="container-fluid" role="main">
+	<div class="page-header">
+		<center>
+			<h2> Te damos la bienvenida a la reserva de mesas</h2>
+		</center>	
+	</div>
+	<div class="row">
+		<div class="sep-10"></div>
+		<div class="sep-80">
+			<p>
+				<div class="sq-green"></div> Mesa disponible <br>
+				<div class="sq-yellow"></div> Mesa reservada <br>
+				<div class="sq-puka"></div> Mesa confirmada <br>
+			</p>
+			<div class="alert alert-danger">
+				<b><i class="fa fa-info"></i></b> La disposición final de las mesas puede ser distinta a la que ves en tu pantalla. Por favor, para verificar la posición de tu mesa, haz click <b><a href="#">aquí.</a></b>
+			</div>
 		</div>
-		<div class="col-md-2 "></div>
-		<div class="col-md-4 table_sector">
-			<center>
-				Seccion dos
-			</center>
-			<table id="sector_2">
-				<% (0..8).to_a.each do |i|%>
-					<tr>
+		<div class="sep-10"></div>
+		
+		<center>
+			<div class="table_sector table_sector_half"> 
+				<center>
+					<h4>
+						Sección uno					
+					</h4>
+
+					<% (0..8).to_a.each do |i|%>
 						<%(1..10).to_a.each do |j|%>
-							<% table = Table.find(90 + j + 10*i) %>
-							<td class="<%= "table-appendable" if table.has_room? %> table-entry table-<%= table.status.downcase %>" id="<%= 90 + j + 10*i%>"> <%= image_tag("table.png", size: "25x25")%> <%=90 + j + 10*i%> </td>
+							<%= render "table_icon", id: j + 10*i %>
 						<%end%>
-					</tr>
-				<%end%>
-			</table>
-		</div>
+					<%end%>
+				</center>
+			</div>
+			<div class="sector-separator"></div>
+			<div class="table_sector table_sector_half">
+				<center>
+					<h4>
+						Sección dos
+					</h4>
+
+					<% (0..8).to_a.each do |i|%>
+						<%(1..10).to_a.each do |j|%>
+							<%= render "table_icon", id: 90 + j + 10*i %>
+						<%end%>
+					<%end%>
+				</center>
+			</div>
+		</center>
 	</div>
 	<br>
 	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-8 table_sector">
-			<center>
-				Seccion tres
-			</center>
-			
-			<table id="table_3">
-				<% (0..9).to_a.each do |i|%>
-					<tr>
+		<center>
+			<div class="table_sector">
+				<center>
+					<h4>
+						Sección tres
+					</h4>
+
+					<% (0..9).to_a.each do |i|%>
 						<%(1..12).to_a.each do |j|%>
-							<% table = Table.find(180 + j + 12*i) %>
-							<td class="<%= "table-appendable" if table.has_room? %> table-entry table-<%= table.status.downcase %>" id="<%= 180 + j + 12*i%>"> 
-								<%= image_tag("table.png", size: "25x25")%> <%=180 + j + 12*i%> 
-							</td>
+							<%= render "table_icon", id: 180 + j + 12*i %>
 						<%end%>
-					</tr>
-				<%end%>
-			</table>
-		</div>
+					<%end%>
+				</center>
+			</div>
+		</center>
 	</div>
+	<br>
+	<br>
 
 </main>
 <script type="text/javascript">
@@ -74,8 +84,10 @@
 
 	$(".table-appendable").click(function(){
 		var id = $(this).attr("id");
+		var table_group = $(this).attr("data-group-name");
 		$("#user_add_modal").find("form").attr("action", "/join/"+id);
 		$("#table-number").text(id);
+		$("#table-group").text(table_group);
 		$("#user_add_modal").modal("show");
 	});
 </script>

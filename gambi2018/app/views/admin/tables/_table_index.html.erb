@@ -1,6 +1,55 @@
 <%= render "layouts/shared/navbar" %>
 <div class="container">
-	<% (1..300).to_a.each do |id| %>
-		<a href="<%="/admin/tables/#{id}"%>"><%= id %></a>
-	<% end %>
+	<div class="row">
+		<center>
+			<div class="table_sector table_sector_half"> 
+				<center>
+					<h4>
+						Sección uno	
+					</h4>
+
+					<% (0..8).to_a.each do |i|%>
+						<%(1..10).to_a.each do |j|%>
+							<%= render "admin/tables/table_icon_admin", id: j + 10*i %>
+						<%end%>
+					<%end%>
+				</center>
+			</div>
+			<div class="sector-separator"></div>
+			<div class="table_sector table_sector_half">
+				<center>
+					<h4>
+						Sección dos
+					</h4>
+
+					<% (0..8).to_a.each do |i|%>
+						<%(1..10).to_a.each do |j|%>
+							<%= render "admin/tables/table_icon_admin", id: 90 + j + 10*i %>
+						<%end%>
+					<%end%>
+				</center>
+			</div>
+		</center>
+	</div>
+	<br>
+	<div class="row">
+		<center>
+			<div class="table_sector">
+				<center>
+					<h4>
+						Sección tres
+					</h4>
+
+					<% (0..9).to_a.each do |i|%>
+						<%(1..12).to_a.each do |j|%>
+							<%= render "admin/tables/table_icon_admin", id: 180 + j + 12*i %>
+						<%end%>
+					<%end%>
+				</center>
+			</div>
+		</center>
+	</div>
+	<br>
+	<br>
+
 </div>

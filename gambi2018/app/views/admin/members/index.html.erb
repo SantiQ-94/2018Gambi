@@ -1,0 +1,67 @@
+<%= render "layouts/shared/navbar" %>
+<div class="container">
+	<div class="page-header">
+		<h3>Tickets / Invitados</h3>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			
+			<table id="tickets-table" class="table table-hover">
+				<thead>
+					<tr>
+						<th>Ticket</th>
+						<th>Identificación</th>
+						<th>Nombre</th>
+						<th>Telefono</th>
+						<th>Mesa</th>
+						<th>Grupo</th>
+						<th>Estado</th>
+						<th>Propietario</th>
+						<th>Cap.</th>
+						<th>Suscritos</th>
+						<th>Notificación</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% User.order("id ASC").each do |user| %>
+						<% if not user.admin? %>
+							<%= render "user_info", user: user %>
+						<% end %>
+					<% end %>
+				</tbody>
+			</table>
+
+		</div>
+		
+	</div>
+</div>
+
+<script type="text/javascript">
+	var table; 
+	function toggle_state(obj){
+		var id = $(obj).attr("data-user");
+		var cell_id = "#cell-"+id;
+		$(obj).find("div").toggleClass("sq-puka");
+		$(obj).find("div").toggleClass("sq-green");
+		var text = $(obj).find("span").text();
+		var new_text = text == "Activar" ? "Desactivar" : "Activar";
+		$(obj).find("span").text(new_text);
+		table.cell($(cell_id)).data($(obj).parent().html()).draw();
+		$(cell_id).find(".toggle-notification").click(toggle_notification);
+	}
+
+	function toggle_notification(){
+		var id = $(this).attr("data-user");
+		var obj = $(this);
+		$.ajax({
+			url: "/admin/members/"+id+"/toggle",
+			method: "post",
+			success: function(){
+				toggle_state(obj);
+			}
+		});
+	}
+
+	table = $("#tickets-table").DataTable();
+	$("#tickets-table").on("click", ".toggle-notification", toggle_notification);
+</script>

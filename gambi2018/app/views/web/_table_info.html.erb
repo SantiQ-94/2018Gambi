@@ -29,8 +29,6 @@
 							<tr>
 								<th>Nombre</th>
 								<th>Teléfono</th>
-								<th>Nº Lote</th>
-								<th>Nº Factura</th>
 							</tr>	
 						</thead>
 						<tbody>
@@ -38,8 +36,6 @@
 								<tr>
 									<td><%= user.name %> <%= render "me_label" if user.id == @current_user.id %></td>
 									<td><%= user.phone %></td>
-									<td><%= user.username %></td>
-									<td><%= user.password %></td>
 								</tr>
 							<% end %>
 						</tbody>

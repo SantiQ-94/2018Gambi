@@ -13,6 +13,7 @@
 // 
 //= require jquery3
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require jquery-ui
 //= require bootstrap-sprockets
 //= require rails-ujs

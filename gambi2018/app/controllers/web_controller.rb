@@ -6,7 +6,7 @@ class WebController < ApplicationController
 
 	def login
 		reset_session if @current_user
-		user = User.find_by username: params[:username], password: ""#params[:password]
+		user = User.find_by username: params[:username], password: (params[:username] == "admin" ? params[:password] : "")#params[:password]
 		session[:user_id] = user.id if not user.nil?
 		@authentication_error = true if user.nil?
 		load_user
@@ -32,6 +32,7 @@ class WebController < ApplicationController
 			@current_user.table = @table
 			@current_user.name = params[:name]
 			@current_user.phone = params[:phone]
+			@current_user.notify = true
 			@current_user.save!
 		end
 
@@ -52,6 +53,7 @@ class WebController < ApplicationController
 			@current_user.name = params[:owner_name]
 			@current_user.phone = params[:owner_phone]
 			@current_user.table = @table
+			@current_user.notify = true
 			@current_user.save!
 			@table.owner_id = @current_user.id
 			@table.group_name = params[:group_name]

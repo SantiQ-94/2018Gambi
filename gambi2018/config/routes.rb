@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       post "cancel"
   	end
 
-    resources :members
+    resources :members do
+      post "toggle"
+    end
   end
 end

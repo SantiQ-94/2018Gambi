@@ -14,6 +14,7 @@
  *= require web
  *= require font-awesome
  *= require_tree .
+ *= require dataTables/jquery.dataTables
  *= require_self
  */
 
@@ -23,20 +24,38 @@ html, body{
 	width: 100%;
 }
 
-.panel-vertical{
-	padding: 20px 0;
-	background: rgba(255, 255, 255, 0.3);
-	border-radius: 15px;
+
+.table-view{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	border-radius: 3px;
+	margin: 3px;
+}
+
+.full-height{
+	height: 100%;
+}
+
+.panel-vertical, .vertical{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 .table-disponible{
 	background-color: green;
+	color: #ddd;
 }
+
 .table-reservada{
 	background-color: orange;
+	color: 333;
 }
+
 .table-confirmada{
-	background-color: gray;
+	background-color: #f21f1f;
+	color: #ddd;
 }
 
 .table-disponible:hover, .table-appendable:hover{
@@ -46,4 +65,44 @@ html, body{
 
 .help-img{
 	width: 100%;
+}
+
+.text-white{
+	color: white;
+}
+
+.sq-green{
+	display: inline-block;
+	height: 15px;
+	width: 15px;
+	background-color: green;
+	border-radius: 3px;
+}
+.sq-yellow{
+	display: inline-block;
+	height: 15px;
+	width: 15px;
+	background-color: orange;
+	border-radius: 3px;
+}
+.sq-puka{
+	display: inline-block;
+	height: 15px;
+	width: 15px;
+	background-color: #f21f1f;
+	border-radius: 3px;
+}
+
+.sep-10{
+	display: inline-block;
+	width: 10%;
+}
+.sep-80{
+	display: inline-block;
+	width: 80%;
+}
+
+.toggle-notification{
+	cursor: pointer;
+	color: #4286f4;
 }

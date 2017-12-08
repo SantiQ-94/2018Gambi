@@ -1,0 +1,6 @@
+<% table = Table.find id %>
+<div class="table-view <%= "table-appendable" if table.has_room? %> table-entry table-<%= table.status.downcase %>" id="<%= id %>" data-group-name="<%= table.group_name %>">
+	<center class="vertical">
+		<b><%= id %></b>
+	</center>
+</div>

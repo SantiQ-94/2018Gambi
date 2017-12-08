@@ -75,7 +75,7 @@ class Admin::TablesController < ApplicationController
 	def validate_table_and_user
 
 		@table = Table.find_by id: params[:table_id]
-		@user = User.find_by username: params[:lote], password: params[:factura]
+		@user = User.find_by username: params[:lote], password: "" #params[:factura]
 
 		if @table.nil? or @user.nil?
 			abort_mission
