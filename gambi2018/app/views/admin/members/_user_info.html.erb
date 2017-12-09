@@ -9,5 +9,5 @@
 	<td><%= user.table.owner.name if user.table %></td>
 	<td><%= user.table.max_people if user.table %></td>
 	<td><%= user.table.users.count if user.table %></td>
-	<td id="cell-<%= user.id %>"><%= render "notify_#{user.notify}", user: user %></td>
+	<td id="cell-<%= user.id %>"><%= render "notify_#{user.notify_status}", user: user %></td>
 </tr>
