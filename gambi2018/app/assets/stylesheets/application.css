@@ -36,6 +36,13 @@ html, body{
 .full-height{
 	height: 100%;
 }
+.not-full-height{
+	height: 95%;
+}
+
+.social-links{
+	color: #fff;
+}
 
 .panel-vertical, .vertical{
 	position: relative;
@@ -105,4 +112,12 @@ html, body{
 .toggle-notification{
 	cursor: pointer;
 	color: #4286f4;
+}
+
+.footer-links{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
 }
