@@ -41,6 +41,10 @@ html, body{
 }
 
 .social-links{
+	color: #b4b4b4;
+}
+
+.social-links:hover{
 	color: #fff;
 }
 
@@ -117,7 +121,26 @@ html, body{
 .footer-links{
 	position: absolute;
 	bottom: 0;
-	width: 100%;
+	width: 80%;
 	height: 60px;
 	line-height: 60px;
+}
+
+.header-login{
+	position: absolute;
+	top: 5%;
+	width: 100%;
+	height: 20%;
+}
+
+.header-img{
+	max-width: : 100%;
+	max-height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.navbar{
+	margin-bottom: 0px;
 }

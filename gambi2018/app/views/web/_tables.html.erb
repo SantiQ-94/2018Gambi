@@ -2,7 +2,7 @@
 <%= render "reservar_table" %>
 <%= render "user_add_modal" %>
 
-<main class="container-fluid " role="main">
+<main class="container-fluid tables-background" role="main">
 	<div class="page-header">
 		<center>
 			<h2> Te damos la bienvenida a la reserva de mesas</h2>
@@ -18,7 +18,7 @@
 			</p>
 			<div class="alert alert-danger alert-tables">
 				<!--<b><i class="fa fa-info"></i></b>--> 
-				La disposición final de las mesas puede ser distinta a la que ves en tu pantalla. Por favor, para verificar la posición de tu mesa, haz click <b><a href="#">aquí.</a></b>
+				La disposición final de las mesas puede ser distinta a la que ves en tu pantalla. Por favor, para verificar la posición de tu mesa, haz click <b><a href="<%= asset_path 'imagen_modelo.png'%>" target="_blank">aquí.</a></b>
 			</div>
 		</div>
 		<div class="sep-10"></div>
@@ -75,6 +75,7 @@
 	<br>
 
 </main>
+
 <script type="text/javascript">
 	$(".table-disponible").click(function(){
 		//<!-- esta funcion recupera el id de la mesa en la que se hizo click y genera el modal para la reserva de mesas-->

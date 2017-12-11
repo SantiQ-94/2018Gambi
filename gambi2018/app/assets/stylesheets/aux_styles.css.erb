@@ -39,6 +39,8 @@
 .login-help{
 	text-align: left;
 	color: #b4b4b4;
+	font-weight: bold;
+	font-size: 18px;
 }
 
 .login-help:hover{
@@ -100,11 +102,13 @@
 
 /*esta clase sera utilizada para poner un background en la vista de mesas, tanto para el usuario como para el administrador*/
 .tables-background {
-	background-image: url("<%= asset_path 'background.png'%>");
+	background-image: url("<%= asset_path 'background_tables.png'%>");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center top;
-	opacity: 0.7;
+	background-size: cover;
+	opacity: 0.9;
+	color: #fff;
 
 }
 
