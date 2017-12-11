@@ -41,10 +41,10 @@
 	function toggle_state(obj){
 		var id = $(obj).attr("data-user");
 		var cell_id = "#cell-"+id;
-		$(obj).find("div").toggleClass("sq-puka");
+		$(obj).find("div").toggleClass("sq-yellow");
 		$(obj).find("div").toggleClass("sq-green");
 		var text = $(obj).find("span").text();
-		var new_text = text == "Activar" ? "Desactivar" : "Activar";
+		var new_text = text == "En proceso" ? "Confirmado" : "En proceso";
 		$(obj).find("span").text(new_text);
 		table.cell($(cell_id)).data($(obj).parent().html()).draw();
 		$(cell_id).find(".toggle-notification").click(toggle_notification);

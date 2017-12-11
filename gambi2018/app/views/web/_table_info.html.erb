@@ -11,6 +11,9 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
+			<%= render "message_#{ @current_user.notify_status }" %>
+		</div>
+		<div class="col-md-12">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h3 class="panel-title">Detalles de la mesa</h3>

@@ -5,4 +5,10 @@ class User < ApplicationRecord
   	username == "admin"
   end
 
+  def notify_status
+  	return "processing" if table and notify
+  	return "confirmed" if table and not notify
+  	return "disabled"
+  end
+
 end
