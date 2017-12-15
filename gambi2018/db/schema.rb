@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20171208061302) do
     t.bigint "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "notify", default: true
+    t.boolean "notify", default: false
     t.index ["table_id"], name: "index_users_on_table_id"
   end
 

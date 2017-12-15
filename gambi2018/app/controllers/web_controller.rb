@@ -6,7 +6,7 @@ class WebController < ApplicationController
 
 	def login
 		reset_session if @current_user
-		user = User.find_by username: params[:username], password: (params[:username] == "admin" ? params[:password] : "")#params[:password]
+		user = User.find_by username: params[:username], password: params[:password]
 		session[:user_id] = user.id if not user.nil?
 		@authentication_error = true if user.nil?
 		load_user

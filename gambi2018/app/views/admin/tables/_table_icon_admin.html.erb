@@ -1,6 +1,6 @@
 <% table = Table.find id %>
 <a class="table-view <%= "table-appendable" if table.has_room? %> table-entry table-<%= table.status.downcase %>" href="/admin/tables/<%=id%>">
-	<center class="vertical">
+	<center class="table-vertical">
 		<b><%= id %></b>
 	</center>
 </a>
