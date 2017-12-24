@@ -18,38 +18,43 @@
 			</p>
 			<div class="alert alert-danger alert-tables">
 				<!--<b><i class="fa fa-info"></i></b>--> 
-				La disposición final de las mesas puede ser distinta a la que ves en tu pantalla. Por favor, para verificar la posición de tu mesa, haz click <b><a href="<%= asset_path 'plano_mesas.png'%>" target="_blank">aquí.</a></b>
+				La disposición final de las mesas puede ser distinta a la que ves en tu pantalla. Por favor, para verificar la posición de tu mesa, haz click <b><a href="<%= asset_path 'plano_mesas.pdf'%>" target="_blank">aquí.</a></b>
 			</div>
 		</div>
 		<div class="sep-10"></div>
 		
+	</div>
+	<br>
+
+	<div class="row">
 		<center>
-			<div class="table_sector table_sector_half"> 
-				<center>
-					<h4>
-						Sección uno					
-					</h4>
+			<div class="sector-row">
+				<div class="table_sector table_sector_half"> 
+					<center>
+						<h4>
+							Sección uno					
+						</h4>
 
-					<% (0..8).to_a.each do |i|%>
-						<%(1..10).to_a.each do |j|%>
-							<%= render "table_icon", id: j + 10*i %>
+						<% (1..66).to_a.each do |i|%>
+							<%= render "table_icon", id: i %>
 						<%end%>
-					<%end%>
-				</center>
-			</div>
-			<div class="sector-separator"></div>
-			<div class="table_sector table_sector_half">
-				<center>
-					<h4>
-						Sección dos
-					</h4>
+					</center>
+				</div>
+				<div class="sector-separator"></div>
+				<div class="table_sector table_sector_half second_section">
+					<center>
+						<h4>
+							Sección dos
+						</h4>
 
-					<% (0..8).to_a.each do |i|%>
-						<%(1..10).to_a.each do |j|%>
-							<%= render "table_icon", id: 90 + j + 10*i %>
-						<%end%>
-					<%end%>
-				</center>
+						<% (67..126).to_a.each do |i|%>
+							<%= render "table_icon", id: i %>
+						<%end%><br>
+						<% 6.times do %>
+							<%= render "invisible_table" %>
+						<% end %>
+					</center>
+				</div>
 			</div>
 		</center>
 	</div>
@@ -62,10 +67,8 @@
 						Sección tres
 					</h4>
 
-					<% (0..9).to_a.each do |i|%>
-						<%(1..12).to_a.each do |j|%>
-							<%= render "table_icon", id: 180 + j + 12*i %>
-						<%end%>
+					<% (127..288).to_a.each do |i|%>
+						<%= render "table_icon", id: i %>
 					<%end%>
 				</center>
 			</div>
