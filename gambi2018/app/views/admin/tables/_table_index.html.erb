@@ -8,10 +8,8 @@
 						Sección uno	
 					</h4>
 
-					<% (0..8).to_a.each do |i|%>
-						<%(1..10).to_a.each do |j|%>
-							<%= render "admin/tables/table_icon_admin", id: j + 10*i %>
-						<%end%>
+					<% (1..66).to_a.each do |i|%>
+						<%= render "admin/tables/table_icon_admin", id: i %>
 					<%end%>
 				</center>
 			</div>
@@ -22,11 +20,13 @@
 						Sección dos
 					</h4>
 
-					<% (0..8).to_a.each do |i|%>
-						<%(1..10).to_a.each do |j|%>
-							<%= render "admin/tables/table_icon_admin", id: 90 + j + 10*i %>
-						<%end%>
+					<% (67..126).to_a.each do |i|%>
+						<%= render "admin/tables/table_icon_admin", id: i %>
 					<%end%>
+					<br>
+					<% 6.times do %>
+						<%= render "invisible_table" %>
+					<% end %>
 				</center>
 			</div>
 		</center>
@@ -40,10 +40,8 @@
 						Sección tres
 					</h4>
 
-					<% (0..9).to_a.each do |i|%>
-						<%(1..12).to_a.each do |j|%>
-							<%= render "admin/tables/table_icon_admin", id: 180 + j + 12*i %>
-						<%end%>
+					<% (127..288).to_a.each do |i|%>
+						<%= render "admin/tables/table_icon_admin", id: i %>
 					<%end%>
 				</center>
 			</div>
